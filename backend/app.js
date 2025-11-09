@@ -16,7 +16,7 @@ import { notifyUsers } from './services/notifyUsers.js';
 export const app = express();
   
 app.use(cors({  //cors middleware 
-  origin:[process.env.CLIENT_URL], // allow to access the backend from this url
+  origin:[process.env.FRONTEND_URL], // allow to access the backend from this url
   methods:['GET','POST','PUT','DELETE'], // allowed methods
   credentials : true // allow cookies to be sent
 }))
