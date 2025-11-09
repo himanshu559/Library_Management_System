@@ -12,7 +12,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { logout, resetAuthSlice } from "../store/slices/authSlice";
 import { toast } from "react-toastify";
 import { useEffect } from "react";
-
+import { toggleAddNewAdminPopup, toggleSettingPopup } from "../store/slices/popUpSlice";
+import AddNewAdmin from "../popups/AddNewAdmin";
 const SideBar = ({ isSideBarOpen, setIsSideBarOpen, setSelectedComponent }) => {
   const dispatch = useDispatch();
    const {addNewAdminPopup} = useSelector(state => state.popup);
@@ -49,9 +50,9 @@ const SideBar = ({ isSideBarOpen, setIsSideBarOpen, setSelectedComponent }) => {
             <span>Books</span>
           </button>
 
-          {/* {
+           {
             isAuthenticated && user?.role === "Admin" && (
-              <> */}
+              <> 
                 <button className="w-full py-2 font-medium bg-transparent rounded-md hover:cursor-pointer flex items-center space-x-2" onClick={() => setSelectedComponent("Catalog")}>
                   <img src={catalogIcon} alt="catalog" />
                   <span>Catalog</span>
@@ -60,18 +61,14 @@ const SideBar = ({ isSideBarOpen, setIsSideBarOpen, setSelectedComponent }) => {
                   <img src={usersIcon} alt="users" />
                   <span>Users</span>
                 </button>
-                <button className="w-full py-2 font-medium bg-transparent rounded-md hover:cursor-pointer flex items-center space-x-2" >
-
-                  {/* onClick={() => setSelectedComponent("Users")}> */}
-                  {/* <img src={usersIcon} alt="users" />
-                <span>Users</span> */}
+                <button className="w-full py-2 font-medium bg-transparent rounded-md hover:cursor-pointer flex items-center space-x-2" onClick={() => dispatch(toggleAddNewAdminPopup())}>
 
                   <RiAdminFill className="w-6 h-6" /> <span>Add New Admin</span>
 
                 </button>
-              {/* </> */}
-            {/* ) */}
-          {/* } */}
+              </> 
+             )
+           }
 
           {
             isAuthenticated && user?.role === "User" && (
@@ -86,7 +83,7 @@ const SideBar = ({ isSideBarOpen, setIsSideBarOpen, setSelectedComponent }) => {
 
           <button className="w-full py-2 font-medium bg-transparent rounded-md hover:cursor-pointer flex items-center space-x-2">
 
-            {/* onClick={() => setSelectedComponent("My Borrowed Book")} */}
+             onClick={() => dispatch(toggleSettingPopup())}
             <img src={settingIcon} alt="Borrow book Icon" />
             <span>Upadate Credentials</span>
           </button>
