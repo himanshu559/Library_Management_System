@@ -51,7 +51,7 @@ const SideBar = ({ isSideBarOpen, setIsSideBarOpen, setSelectedComponent }) => {
           </button>
 
            {
-            isAuthenticated && user?.role === "Admin" && (
+            isAuthenticated && user?.role === "User" && (
               <> 
                 <button className="w-full py-2 font-medium bg-transparent rounded-md hover:cursor-pointer flex items-center space-x-2" onClick={() => setSelectedComponent("Catalog")}>
                   <img src={catalogIcon} alt="catalog" />
@@ -71,7 +71,7 @@ const SideBar = ({ isSideBarOpen, setIsSideBarOpen, setSelectedComponent }) => {
            }
 
           {
-            isAuthenticated && user?.role === "User" && (
+            isAuthenticated && user?.role === "Admin" && (
               <>
                 <button className="w-full py-2 font-medium bg-transparent rounded-md hover:cursor-pointer flex items-center space-x-2" onClick={() => setSelectedComponent("My Borrowed Book")}>
                   <img src={catalogIcon} alt="Borrow book Icon" />
@@ -89,6 +89,8 @@ const SideBar = ({ isSideBarOpen, setIsSideBarOpen, setSelectedComponent }) => {
           </button>
 
         </nav>
+
+
         <div className="px-6 py-6">
           <button className="py-2 font-medium text-center bg-transparent rounded-md hover:cursor-pointer flex justify-center items-center space-x-5 mx-auto w-fit" onClick={handlelogout}> 
 

@@ -98,7 +98,7 @@ export const authSlice = createSlice({
       state.loading = false;
       state.message = action.payload.message
     },
-    forgotPasswordFailed: (state) => {
+    forgotPasswordFailed: (state ,action) => {
       state.loading = false;
       state.error = action.payload;
     },
@@ -114,7 +114,7 @@ export const authSlice = createSlice({
       state.user = action.payload.user
       state.isAuthenticated = true
     },
-    resetPasswordFailed: (state) => {
+    resetPasswordFailed: (state, action) => {
       state.loading = false;
       state.error = action.payload;
     },
@@ -130,7 +130,7 @@ export const authSlice = createSlice({
       state.message = action.payload;
 
     },
-    updatePasswordFailed: (state) => {
+    updatePasswordFailed: (state, action) => {
       state.loading = false;
       state.error = action.payload;
     },
@@ -227,33 +227,11 @@ export const logout = () => async (dispatch) => {
     });
 };
 
-// export const logout = () => async (dispatch) => {
-//   dispatch(authSlice.actions.logoutRequest());
-
-//   try {
-//     const res = await axios.get("http://localhost:8000/api/v1/auth/logout", data,{
-//       withCredentials: true,
-//     });
-
-//    const message = res.data?.message || "Logout successful";
-
-
-//     dispatch(authSlice.actions.logoutSuccess(message));
-//     dispatch(authSlice.actions.resetAuthSlice());
-//   } catch (error) {
-//     const message =
-//       error.response?.data?.message ||
-//       error.message ||
-//       "Logout failed. Please try again.";
-//     dispatch(authSlice.actions.logoutFailed(message));
-//   }
-// };
-
 export const getUser = () => async (dispatch) => {
   dispatch(authSlice.actions.getUserRequest());
 
   await axios
-    .get("http://localhost:8000/api/v1/auth/me", data, {
+    .get("http://localhost:8000/api/v1/auth/me",{
       withCredentials: true,
     })
     .then((res) => {
