@@ -81,11 +81,11 @@ const SideBar = ({ isSideBarOpen, setIsSideBarOpen, setSelectedComponent }) => {
             )
           }
 
-          <button className="w-full py-2 font-medium bg-transparent rounded-md hover:cursor-pointer flex items-center space-x-2">
+          <button className="w-full py-2 font-medium bg-transparent rounded-md hover:cursor-pointer flex items-center space-x-2"
 
-             onClick={() => dispatch(toggleSettingPopup())}
+             onClick={() => dispatch(toggleSettingPopup())}>
             <img src={settingIcon} alt="Borrow book Icon" />
-            <span>Upadate Credentials</span>
+            <span>Update Credentials</span>
           </button>
 
         </nav>
