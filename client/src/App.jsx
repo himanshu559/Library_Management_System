@@ -11,6 +11,7 @@ import {ToastContainer} from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useDispatch, useSelector } from "react-redux";
 import { getUser } from "./store/slices/authSlice.js";
+import { fetchAllUsers } from "./store/slices/userSlice.js";
 
 const App = () => {
 
@@ -20,8 +21,10 @@ const App = () => {
 
   useEffect(() => {
    dispatch(getUser());
-
-  }, []);
+   if(isAuthenticated && user?.role==="Admin"){
+  dispatch(fetchAllUsers());
+  }
+  }, [isAuthenticated,dispatch]);
 
   return (
     <>

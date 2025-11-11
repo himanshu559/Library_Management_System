@@ -42,7 +42,7 @@ const Home = () => {
               }
               break;
               case "Users":
-                if (user.role === "Admin") {
+                if (user.role === "Admin") { // Only Admin can access Users component
                return <Users />
               }
               
