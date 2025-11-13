@@ -33,6 +33,8 @@ app.use(expressFileupload({ // middleware for file upload
   tempFileDir:'/tmp/',
 
 })); 
+//app.use(fileUpload({ useTempFiles: true, tempFileDir: "/tmp/" }));
+
 
 // Sample route
 

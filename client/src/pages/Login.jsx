@@ -71,6 +71,7 @@ const Login = () => {
               <div className="mb-4">
                 <input
                 type="password"
+                autoComplete="current-password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="Enter Password"
